@@ -13,6 +13,10 @@ ADD logstash /etc/logstash
 ADD kibana   /etc/kibana
 ADD nginx    /etc/nginx/conf.d
 
+RUN addgroup -S elasticsearch \
+ && adduser -S -G elasticsearch elasticsearch \
+ && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/config
+
 # Add openssl to create crypted htpassw file for nginx frontend
 #
 RUN apk add --no-cache openssl

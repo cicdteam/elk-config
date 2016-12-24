@@ -36,4 +36,4 @@ docker run \
 # Nginx frontend for kibana container
 
 Image contais example configuration for Nginx that serve's as frontend proxy for kibana container to allow authorized access to dashboards.
-You could pecify your own credentials via `-e ELK_USER=yourname -e ELK_PASS=yoursecret` when starting config container.
+You could specify your own credentials via `-e ELK_USER=yourname -e ELK_PASS=yoursecret` when starting config container.
