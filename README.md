@@ -28,7 +28,7 @@ docker run -d --name es -p 9200:9200 --volumes-from elk-config elasticsearch:alp
 
 # Example how to use you own config files
 
-- Pull git repo by `git pull https://ddddd`
+- Clone git repo by `git clone https://github.com/pureclouds/elk-config.git`
 - Edit configs in corresponding subdurs
 - Build your own elk-config docker image by `docker build -t local/elk-config .`
 - Start your own config container by `docker run -d -i --name elk-config local/elk-config`
