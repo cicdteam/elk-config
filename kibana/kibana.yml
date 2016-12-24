@@ -1,0 +1,9 @@
+#
+# config file for kibana docker image
+# /etc/kibana/kibana.yml
+
+server.name: 'elk-stack'
+server.host: '0.0.0.0'
+server.port: 5601
+elasticsearch.url: 'http://elasticsearch:9200'
+kibana.defaultAppId: 'discover'

@@ -1,0 +1,11 @@
+# config file for elasticsearch:alpine docker image
+# /usr/share/elasticsearch/config/elasticsearch.yml
+#
+
+cluster.name: elk-stack
+node.name: es-node
+network.host: 0.0.0.0
+
+# this value is required because we set "network.host"
+# be sure to modify it appropriately for a production cluster deployment
+discovery.zen.minimum_master_nodes: 1
