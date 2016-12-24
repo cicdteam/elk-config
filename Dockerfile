@@ -1,10 +1,23 @@
-FROM busybox
+FROM alpine
 MAINTAINER Andrew Taranik <me@pureclouds.net>
 
-ADD elastic/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
-ADD logstash/logstash.conf    /etc/logstash/logstash.conf
-ADD kibana/kibana.yml         /etc/kibana/kibana.yml
+# Credentials for Nginx frontend (basic auth)
+#
+ENV ELK_USER admin
+ENV ELK_PASS secret
 
-VOLUME /etc/logstash/logstash.conf
-VOLUME /etc/kibana/kibana.yml
-VOLUME /usr/share/elasticsearch/config/elasticsearch.yml
+# ELK components configuration files/dirs
+#
+ADD elastic  /usr/share/elasticsearch/config
+ADD logstash /etc/logstash
+ADD kibana   /etc/kibana
+ADD nginx    /etc/nginx/conf.d
+
+# Add openssl to create crypted htpassw file for nginx frontend
+#
+RUN apk add --no-cache openssl
+
+VOLUME /usr/share/elasticsearch/config /etc/logstash /etc/kibana /etc/nginx/conf.d
+
+ADD init.sh /init.sh
+CMD ["/init.sh"]
